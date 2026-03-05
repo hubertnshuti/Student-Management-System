@@ -1,53 +1,49 @@
 package models;
 
-import database.DatabaseOperations;
-
-public class Student extends Person implements DatabaseOperations {
-    private String id;
+public class Student extends Person {
+    private String studentId;   // business/student ID (e.g., "23RP001")
     private String course;
     private double marks;
 
-    // Constructor calling the parent (super) class
-    public Student(String name, String email, String id, String course, double marks) {
+    public Student(String name, String email, String studentId, String course, double marks) {
         super(name, email);
-        this.id = id;
+        this.studentId = studentId;
         this.course = course;
         this.marks = marks;
     }
 
-    // Implementing the abstract method from Person
     @Override
     public void displayInfo() {
-        System.out.println("Student ID: " + id + ", Name: " + name + ", Course: " + course);
+        System.out.println(
+                "Student ID: " + studentId +
+                        ", Name: " + name +
+                        ", Email: " + email +
+                        ", Course: " + course +
+                        ", Marks: " + marks
+        );
     }
 
-    // Implementing methods from DatabaseOperations interface
-    // We leave them blank for now until we connect JDBC
-    @Override
-    public void add() {
-        System.out.println("Adding student to database...");
+    public String getStudentId() {
+        return studentId;
     }
 
-    @Override
-    public void delete() {
-        System.out.println("Deleting student from database...");
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 
-    @Override
-    public void update() {
-        System.out.println("Updating student in database...");
+    public String getCourse() {
+        return course;
     }
 
-    @Override
-    public void search(String keyword) {
-        System.out.println("Searching for student: " + keyword);
+    public void setCourse(String course) {
+        this.course = course;
     }
 
-    // Getters and Setters
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
-    public String getCourse() { return course; }
-    public void setCourse(String course) { this.course = course; }
-    public double getMarks() { return marks; }
-    public void setMarks(double marks) { this.marks = marks; }
+    public double getMarks() {
+        return marks;
+    }
+
+    public void setMarks(double marks) {
+        this.marks = marks;
+    }
 }
