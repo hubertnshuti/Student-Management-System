@@ -8,7 +8,7 @@ public class DatabaseInitializer {
 
     public static void initializeDatabase() {
 
-        String createTableSQL = """
+        String createStudentsTableSQL = """
                 CREATE TABLE IF NOT EXISTS students (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT NOT NULL,
@@ -18,11 +18,22 @@ public class DatabaseInitializer {
                 );
                 """;
 
+        String createUsersTableSQL = """
+                CREATE TABLE IF NOT EXISTS users (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    username TEXT NOT NULL UNIQUE,
+                    password TEXT NOT NULL
+                );
+                """;
+
         try (Connection conn = DBConnection.getConnection();
              Statement stmt = conn.createStatement()) {
 
-            stmt.execute(createTableSQL);
+            stmt.execute(createStudentsTableSQL);
+            stmt.execute(createUsersTableSQL);
+
             System.out.println("Students table ready.");
+            System.out.println("Users table ready.");
 
         } catch (SQLException e) {
             System.out.println("Database initialization failed: " + e.getMessage());

@@ -1,8 +1,5 @@
-import dao.StudentDAO;
 import db.DatabaseInitializer;
-import models.Student;
-
-import java.util.List;
+import service.UserService;
 
 public class Main {
 
@@ -21,12 +18,11 @@ public class Main {
         // Quick DAO placeholder test
         StudentDAO dao = new StudentDAO();
 
-        List<Student> results = dao.searchStudents("Jane");
+        System.out.println(userService.registerUser("admin", "1234"));
 
-        for (Student s : results) {
-            s.displayInfo();
-        }
+        boolean success = userService.loginUser("admin", "1234");
+        System.out.println("Login success: " + success);
 
-        System.out.println("Search operation finished.");
+        System.out.println("Step 20 finished.");
     }
 }
