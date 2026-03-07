@@ -4,10 +4,19 @@ import service.UserService;
 public class Main {
 
     public static void main(String[] args) {
+        // Quick model test
+        Student s = new Student(
+                "Hubert Nshuti Ngendahayo",
+                "nshutihubert04@gmail.com",
+                "001",
+                "Computer Scince",
+                90.5
+        );
 
-        DatabaseInitializer.initializeDatabase();
+        s.displayInfo();
 
-        UserService userService = new UserService();
+        // Quick DAO placeholder test
+        StudentDAO dao = new StudentDAO();
 
         System.out.println(userService.registerUser("admin", "1234"));
 
