@@ -1,8 +1,7 @@
+import controller.DashboardController;
 import db.DatabaseInitializer;
-import models.Student;
-import service.StudentService;
 
-import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 public class Main {
 
@@ -10,26 +9,12 @@ public class Main {
 
         DatabaseInitializer.initializeDatabase();
 
-        StudentService service = new StudentService();
+        DashboardController controller = new DashboardController();
 
-        System.out.println("Sorted by Name A-Z:");
-        List<Student> nameSorted = service.sortStudentsByNameAZ();
-        for (Student s : nameSorted) {
-            s.displayInfo();
-        }
+        DefaultTableModel model = controller.loadAllStudentsTable();
 
-        System.out.println("\nSorted by Marks:");
-        List<Student> marksSorted = service.sortStudentsByMarks();
-        for (Student s : marksSorted) {
-            s.displayInfo();
-        }
+        System.out.println("Rows loaded into table model: " + controller.getRowCount(model));
 
-        System.out.println("\nFiltered by max marks = 88:");
-        List<Student> filtered = service.filterStudentsByMaxMarks(88);
-        for (Student s : filtered) {
-            s.displayInfo();
-        }
-
-        System.out.println("\nStep 17 finished.");
+        System.out.println("Step 18 finished.");
     }
 }
