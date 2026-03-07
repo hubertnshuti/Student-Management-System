@@ -1,23 +1,28 @@
-import dao.StudentDAO;
-import db.DatabaseInitializer;
-import models.Student;
-
-import java.util.List;
+import util.StringUtil;
+import util.Validator;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        DatabaseInitializer.initializeDatabase();
+        String rawName = "   jAnE doE   ";
+        String rawEmail = "   JaneDoe@Example.COM   ";
+        String rawCourse = "Computer Science";
+        String rawMarks = "85";
 
-        StudentDAO dao = new StudentDAO();
+        String formattedName = StringUtil.toTitleCase(rawName);
+        String formattedEmail = StringUtil.normalizeEmail(rawEmail);
 
-        List<Student> results = dao.searchStudents("Jane");
+        System.out.println("Formatted Name: " + formattedName);
+        System.out.println("Formatted Email: " + formattedEmail);
 
-        for (Student s : results) {
-            s.displayInfo();
-        }
+        boolean valid = Validator.isStudentValid(
+                formattedName,
+                formattedEmail,
+                rawCourse,
+                rawMarks
+        );
 
-        System.out.println("Search operation finished.");
+        System.out.println("Student data valid: " + valid);
     }
 }
