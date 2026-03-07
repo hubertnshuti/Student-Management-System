@@ -36,7 +36,7 @@
                   <verticalAlignment value="0"/>
                 </properties>
               </component>
-              <component id="643ad" class="javax.swing.JTextField" binding="textName">
+              <component id="643ad" class="javax.swing.JTextField" binding="txtName">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -54,13 +54,15 @@
                   <text value="Email"/>
                 </properties>
               </component>
-              <component id="70b38" class="javax.swing.JTextField" binding="textEmail">
+              <component id="70b38" class="javax.swing.JTextField" binding="txtEmail">
                 <constraints>
                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
-                <properties/>
+                <properties>
+                  <text value=""/>
+                </properties>
               </component>
               <component id="bf398" class="javax.swing.JLabel">
                 <constraints>
@@ -213,13 +215,15 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="d8eaf" class="javax.swing.JTextField" binding="textSearch">
+                  <component id="d8eaf" class="javax.swing.JTextField" binding="txtSearch">
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <text value=""/>
+                    </properties>
                   </component>
                   <component id="1a50f" class="javax.swing.JButton" binding="searchButton1" default-binding="true">
                     <constraints>
