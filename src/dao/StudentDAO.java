@@ -83,4 +83,31 @@ public class StudentDAO {
             System.out.println("Delete failed: " + e.getMessage());
         }
     }
+
+
+    public void updateStudent(int id, Student student) {
+
+        String sql = "UPDATE students SET name = ?, email = ?, course = ?, marks = ? WHERE id = ?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, student.getName());
+            pstmt.setString(2, student.getEmail());
+            pstmt.setString(3, student.getCourse());
+            pstmt.setDouble(4, student.getMarks());
+            pstmt.setInt(5, id);
+
+            int rows = pstmt.executeUpdate();
+
+            if (rows > 0) {
+                System.out.println("Student updated successfully.");
+            } else {
+                System.out.println("Student not found.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Update failed: " + e.getMessage());
+        }
+    }
 }
