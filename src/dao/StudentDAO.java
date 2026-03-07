@@ -110,4 +110,48 @@ public class StudentDAO {
             System.out.println("Update failed: " + e.getMessage());
         }
     }
+
+
+    public List<Student> searchStudents(String keyword) {
+
+        List<Student> students = new ArrayList<>();
+
+        String sql = """
+                SELECT * FROM students
+                WHERE CAST(id AS TEXT) LIKE ?
+                   OR name LIKE ?
+                   OR email LIKE ?
+                   OR course LIKE ?
+                """;
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            String searchPattern = "%" + keyword + "%";
+
+            pstmt.setString(1, searchPattern);
+            pstmt.setString(2, searchPattern);
+            pstmt.setString(3, searchPattern);
+            pstmt.setString(4, searchPattern);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Student s = new Student(
+                        rs.getString("name"),
+                        rs.getString("email"),
+                        String.valueOf(rs.getInt("id")),
+                        rs.getString("course"),
+                        rs.getDouble("marks")
+                );
+
+                students.add(s);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Search failed: " + e.getMessage());
+        }
+
+        return students;
+    }
 }
