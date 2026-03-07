@@ -5,7 +5,9 @@ import models.Student;
 import util.StringUtil;
 import util.Validator;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StudentService {
 
@@ -91,5 +93,40 @@ public class StudentService {
     public List<Student> searchStudents(String keyword) {
         keyword = StringUtil.cleanText(keyword);
         return studentDAO.searchStudents(keyword);
+    }
+
+    public List<Student> sortStudentsByNameAZ() {
+        return studentDAO.getAllStudents()
+                .stream()
+                .sorted(Comparator.comparing(Student::getName, String.CASE_INSENSITIVE_ORDER))
+                .collect(Collectors.toList());
+    }
+
+    public List<Student> sortStudentsByNameZA() {
+        return studentDAO.getAllStudents()
+                .stream()
+                .sorted(Comparator.comparing(Student::getName, String.CASE_INSENSITIVE_ORDER).reversed())
+                .collect(Collectors.toList());
+    }
+
+    public List<Student> sortStudentsById() {
+        return studentDAO.getAllStudents()
+                .stream()
+                .sorted(Comparator.comparingInt(s -> Integer.parseInt(s.getStudentId())))
+                .collect(Collectors.toList());
+    }
+
+    public List<Student> sortStudentsByMarks() {
+        return studentDAO.getAllStudents()
+                .stream()
+                .sorted(Comparator.comparingDouble(Student::getMarks))
+                .collect(Collectors.toList());
+    }
+
+    public List<Student> filterStudentsByMaxMarks(double maxMarks) {
+        return studentDAO.getAllStudents()
+                .stream()
+                .filter(student -> student.getMarks() <= maxMarks)
+                .collect(Collectors.toList());
     }
 }

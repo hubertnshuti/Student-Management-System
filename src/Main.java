@@ -1,9 +1,7 @@
-import dao.StudentDAO;
 import db.DatabaseInitializer;
 import models.Student;
-import util.TableUtil;
+import service.StudentService;
 
-import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
 public class Main {
@@ -12,12 +10,26 @@ public class Main {
 
         DatabaseInitializer.initializeDatabase();
 
-        StudentDAO dao = new StudentDAO();
+        StudentService service = new StudentService();
 
-        List<Student> students = dao.getAllStudents();
+        System.out.println("Sorted by Name A-Z:");
+        List<Student> nameSorted = service.sortStudentsByNameAZ();
+        for (Student s : nameSorted) {
+            s.displayInfo();
+        }
 
-        DefaultTableModel model = TableUtil.buildStudentTableModel(students);
+        System.out.println("\nSorted by Marks:");
+        List<Student> marksSorted = service.sortStudentsByMarks();
+        for (Student s : marksSorted) {
+            s.displayInfo();
+        }
 
-        System.out.println("Rows loaded: " + model.getRowCount());
+        System.out.println("\nFiltered by max marks = 88:");
+        List<Student> filtered = service.filterStudentsByMaxMarks(88);
+        for (Student s : filtered) {
+            s.displayInfo();
+        }
+
+        System.out.println("\nStep 17 finished.");
     }
 }
