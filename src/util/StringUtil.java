@@ -20,3 +20,17 @@ public class StringUtil {
 
         return result.toString().trim();
     }
+    public static String normalizeEmail(String email) {
+        if (email == null) {
+            return "";
+        }
+        return email.trim().toLowerCase();
+    }
+
+    public static String cleanText(String text) {
+        if (text == null) {
+            return "";
+        }
+        return text.trim();
+    }
+}
