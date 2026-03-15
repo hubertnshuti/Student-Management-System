@@ -93,7 +93,6 @@ src
 ## Contributors
 
 ### Hubert Nshuti
-Backend architecture, database integration, application logic, and validation utilities.
-
+Backend architecture, database integration, and application logic.
 ### Happy Radouce Imbabazi
-User interface design, including the **Login** and **Dashboard** forms.
+User interface design, including the **Login** and **Dashboard** forms and validation utilities.
