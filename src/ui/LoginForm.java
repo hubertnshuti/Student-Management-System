@@ -11,6 +11,8 @@ public class LoginForm extends JFrame {
     private JCheckBox chkRememberMe;
     private JButton btnLogin;
     private JButton btnReset;
+    private JLabel usernameLabel;
+    private JLabel lblMessage;
 
     public LoginForm() {
         // 1. Setup the Window (Keeping your exact settings)
@@ -38,6 +40,10 @@ public class LoginForm extends JFrame {
 
         // Styles the Reset button rounded
         btnReset.putClientProperty("JButton.buttonType", "roundRect");
+
+        //Styles the status message label
+        lblMessage.setForeground(Color.LIGHT_GRAY);
+        lblMessage.setHorizontalAlignment(SwingConstants.CENTER);
     }
 
     public static void main(String[] args) {
