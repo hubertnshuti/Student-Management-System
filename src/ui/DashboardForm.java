@@ -39,6 +39,7 @@ public class DashboardForm extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1000, 600);
         setLocationRelativeTo(null);
+        setupMenuBar();
 
         setupTable();
         setupCourseCombo();
@@ -49,6 +50,8 @@ public class DashboardForm extends JFrame {
         deleteButton.setEnabled(false);
         loadAllStudents();
     }
+
+
 
     private void setupTable() {
         String[] columnNames = {"ID", "Name", "Email", "Course", "Marks"};
