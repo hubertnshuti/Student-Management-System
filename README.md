@@ -10,8 +10,7 @@ A **Java desktop application** for managing student records with authentication,
 
 ## Overview
 
-This project demonstrates how a complete desktop system can be structured using **separation of concerns**.  
-It allows administrators to securely log in and perform full **student record management** through an intuitive dashboard.
+The app is all about allowing administrators to securely log in and perform full **student record management** through an intuitive dashboard.
 
 The system emphasizes **clean architecture**, **data validation**, and **organized project structure**.
 
