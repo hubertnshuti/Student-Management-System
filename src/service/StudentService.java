@@ -61,6 +61,22 @@ public class StudentService {
 
         double marks = Double.parseDouble(marksText);
 
+        Student existingStudent = studentDAO.getStudentById(id);
+
+        if (existingStudent == null) {
+            return "Student not found.";
+        }
+
+        boolean noChanges =
+                existingStudent.getName().equals(name) &&
+                        existingStudent.getEmail().equals(email) &&
+                        existingStudent.getCourse().equals(course) &&
+                        existingStudent.getMarks() == marks;
+
+        if (noChanges) {
+            return "No changes detected.";
+        }
+
         Student student = new Student(name, email, idText, course, marks);
         studentDAO.updateStudent(id, student);
 
