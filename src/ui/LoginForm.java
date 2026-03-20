@@ -12,6 +12,8 @@ public class LoginForm extends JFrame {
     private JCheckBox chkRememberMe;
     private JButton btnLogin;
     private JButton btnReset;
+    private JPanel usernameLabel;
+    private JLabel passwordLabel;
 
     private final LoginController loginController;
 
