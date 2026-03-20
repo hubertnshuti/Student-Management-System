@@ -61,12 +61,27 @@ public class StudentService {
 
         double marks = Double.parseDouble(marksText);
 
+        Student existingStudent = studentDAO.getStudentById(id);
+
+        if (existingStudent == null) {
+            return "Student not found.";
+        }
+
+        boolean noChanges =
+                existingStudent.getName().equals(name) &&
+                        existingStudent.getEmail().equals(email) &&
+                        existingStudent.getCourse().equals(course) &&
+                        existingStudent.getMarks() == marks;
+
+        if (noChanges) {
+            return "No changes detected.";
+        }
+
         Student student = new Student(name, email, idText, course, marks);
-        studentDAO.updateStudent(id, student);
+        boolean updated = studentDAO.updateStudent(id, student);
 
-        return "Student updated successfully.";
+        return updated ? "Student updated successfully." : "Student not found.";
     }
-
     public String deleteStudent(String idText) {
 
         idText = StringUtil.cleanText(idText);
@@ -119,7 +134,7 @@ public class StudentService {
     public List<Student> sortStudentsByMarks() {
         return studentDAO.getAllStudents()
                 .stream()
-                .sorted(Comparator.comparingDouble(Student::getMarks))
+                .sorted(Comparator.comparingDouble(Student::getMarks).reversed())
                 .collect(Collectors.toList());
     }
 
