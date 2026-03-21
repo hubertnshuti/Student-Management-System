@@ -8,7 +8,7 @@ public class DBConnection {
 
     private static final String URL = "jdbc:mysql://localhost:3306/sms_db?useSSL=false&serverTimezone=UTC";
     private static final String USER = "root";
-    private static final String PASSWORD = ""; // put your MySQL password here if you have one
+    private static final String PASSWORD = "1234";
 
     public static Connection getConnection() {
         Connection conn = null;
