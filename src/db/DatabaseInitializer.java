@@ -10,19 +10,19 @@ public class DatabaseInitializer {
 
         String createStudentsTableSQL = """
                 CREATE TABLE IF NOT EXISTS students (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    name TEXT NOT NULL,
-                    email TEXT UNIQUE NOT NULL,
-                    course TEXT NOT NULL,
-                    marks REAL
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    name VARCHAR(100) NOT NULL,
+                    email VARCHAR(100) NOT NULL UNIQUE,
+                    course VARCHAR(100) NOT NULL,
+                    marks DOUBLE
                 );
                 """;
 
         String createUsersTableSQL = """
                 CREATE TABLE IF NOT EXISTS users (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    username TEXT NOT NULL UNIQUE,
-                    password TEXT NOT NULL
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    username VARCHAR(100) NOT NULL UNIQUE,
+                    password VARCHAR(100) NOT NULL
                 );
                 """;
 
