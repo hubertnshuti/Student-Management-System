@@ -35,7 +35,7 @@ The system emphasizes **clean architecture**, **data validation**, and **organiz
 
 - **Java**
 - **Java Swing**
-- **SQLite**
+- **MySQL**
 - **JDBC**
 - **FlatLaf** (modern Swing UI styling)
 
